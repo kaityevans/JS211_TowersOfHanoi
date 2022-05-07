@@ -32,18 +32,22 @@ const printStacks = () => {
 // Next, what do you think this function should do?
 const movePiece = () => {
   // Your code here
+// Move piece to stacks a b or c
 
 }
 
 // Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
 const isLegal = () => {
   // Your code here
-
+// Create function that allows piece 2 to be allowed onto pieces 3 or 4 but not 1
+// Create function that allows piece 3 to be allowed onto piece 4 but not 1 or 2
+// Create function that does not allow piece 4 to be placed onto any other piece
 }
 
 // What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
   // Your code here
+// Function should check and validate that all four pieces have moved to a new column and that they are in the order 4, 3, 2, 1
 
 }
 
