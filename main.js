@@ -22,39 +22,76 @@ let stacks = {
   c: []
 };
 
+// let startStack = stacks.a
+// let endStack = stacks.b
+
 // Start here. What is this function doing?
 const printStacks = () => {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
-
+printStacks()
+// console.log(printStacks())
 // Next, what do you think this function should do?
-const movePiece = () => {
+const movePiece = (startStack, endStack) => {
   // Your code here
 // Move piece to stacks a b or c
-
+  // remove a piece from a stack
+  console.log(stacks.a, stacks.b)
+  let removedPiece = stacks[startStack].pop() 
+  // place on a new stack
+  stacks[endStack].push(removedPiece)
+  // Attach removedPiece to new stack
+  console.log("end of movePiece", startStack, endStack)
 }
 
 // Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
-const isLegal = () => {
+const isLegal = (startStack, endStack) => {
   // Your code here
+  let firstArray = stacks[startStack]
+  let indexOfLastItem = firstArray.length - 1
+  let secondArray = stacks[endStack]
+  let indexOfLastItem2 = secondArray.length - 1
+  if(stacks[startStack].length == 0) {
+    console.log("Cannot play from an empty stack")
+    return false
+  }
+  if (secondArray[indexOfLastItem2] == undefined || firstArray[indexOfLastItem] < secondArray[indexOfLastItem2]) {
+    return true
+  }
+  else {
+    console.log("not a legal move")
+    return false
+  }
 // Create function that allows piece 2 to be allowed onto pieces 3 or 4 but not 1
 // Create function that allows piece 3 to be allowed onto piece 4 but not 1 or 2
 // Create function that does not allow piece 4 to be placed onto any other piece
 }
 
 // What is a win in Towers of Hanoi? When should this function run?
-const checkForWin = () => {
+const checkForWin = (startStack, endStack) => {
   // Your code here
+  if(stacks.b.length == 4 || stacks.c.length == 4) {
+    console.log("You Win!")
+    return true
+  }
+  else {
+    console.log("Keep Trying!")
+    return false
+  }
 // Function should check and validate that all four pieces have moved to a new column and that they are in the order 4, 3, 2, 1
 
 }
 
 // When is this function called? What should it do with its argument?
 const towersOfHanoi = (startStack, endStack) => {
+  // console.log("IN Towers of Hanoi", startStack, endStack)
   // Your code here
-
+  isLegal(startStack, endStack)
+  console.log(startStack, endStack)
+  movePiece(startStack, endStack)
+  checkForWin(startStack, endStack)
 }
 
 const getPrompt = () => {
